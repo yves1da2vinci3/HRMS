@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"log"
+	"os"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -20,7 +21,8 @@ type MongoInstance struct {
 var mg MongoInstance
 
 const dbName = "fiberHrms"
-const mongoURI = "mongodb+srv://nodeuser:nodejsissocool@cluster0.1l7ra.mongodb.net/" + dbName
+const uri = os.Getenv("MongoCredentials")
+const mongoURI = uri + dbName
 
 type Employee struct {
 	ID     string  `json:"id,omitempty" bson:"_id,omitempty" `
